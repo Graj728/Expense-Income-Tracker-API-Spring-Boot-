@@ -141,8 +141,10 @@ Access tokens expire in 15 minutes; use `/api/auth/refresh` with the refresh
 token to get a new pair.
 
 ## Notes / next steps
+- Email OTP verification on registration is not yet implemented.
 - Add pagination to list endpoints for large datasets.
-- Add rate limiting on `/api/auth/**`.
 - Add integration tests (Testcontainers + Postgres) for the splitter and
   balance-simplification logic — the rounding and greedy-matching paths are
   the highest-value places to test.
+- Rate limiting on `/api/auth/**` is in-memory and per-instance; won't behave
+  correctly if the app is ever scaled horizontally behind a load balancer.
